@@ -25,6 +25,19 @@ open class Usuario(var nombre:String, var apellido: String){
     fun setTelefono(telefono:Int?){
         this.telefono=telefono
     }
+    fun getCorreo():String?{
+        return correo
+    }
+    fun setCorreo(correo: String?){
+        this.correo=correo
+    }
+    /*Los getter y los setter hay que hacerlos explícitos al ser private*/
+    //Podemos hacer métodos y para que sean sobreescribibles tienen que ser open:
+    open fun mostrarDatos(){
+        println(nombre)
+        println(apellido)
+        println(correo)
+        println(telefono)
+    }
 
 }
-/*Los getter y los setter hay que hacerlos explícitos al ser private*/

@@ -1,6 +1,15 @@
 import java.io.Serializable
 
 class UsuarioEspecializado(nombre:String, apellido:String, var nSS:Int):Usuario(nombre, apellido),Serializable {
+
+    override fun mostrarDatos() {//Sobreescritura desde la clase Usuario
+        super.mostrarDatos()//Esto es lo que hace el método original y puedo añadir abajo
+        println(nSS)
+        //Con este método va a coger las funcionalidades del constructor primario(nombre y apellido) y nSS.
+        //Correo y tel no lo coge porque están en un constructor secundario
+    }
+
+
 }
 
 /*Para heredar (equivale al extends)-> NombreClase()

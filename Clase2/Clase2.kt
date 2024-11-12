@@ -23,4 +23,7 @@ fun main(){
 
     var usuario= Usuario("Carla", "Santiago","lololo@gmail.com")
     var usuario2=Usuario("Pepe", "Perez",123)
+    var usuario3=Usuario("Lolo", "Lopez", "lolilopi@gmail.com",123)
+    var usuarioEspecializado=UsuarioEspecializado("María","Martinez",123)
+    usuarioEspecializado.mostrarDatos()/*Muestra Nombre, apellido y nSS y da como nulo el correo y el tel*/
 }
