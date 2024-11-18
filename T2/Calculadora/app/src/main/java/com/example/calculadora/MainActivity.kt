@@ -51,6 +51,7 @@ class MainActivity : AppCompatActivity(),OnClickListener {
         //Esto es una cajita donde guardamos las variables
         outState.putInt ("op1", op1)
         outState.putInt("op2",op2)
+        outState.putString("operador", operador)
     }
     private fun añadirNumero(numero:String){
         if (binding.textoInicio.text.toString()=="0"){
@@ -78,6 +79,7 @@ class MainActivity : AppCompatActivity(),OnClickListener {
             R.id.btn8 -> añadirNumero("8")
             R.id.btn9 -> añadirNumero("9")
 
+
             R.id.btnSumar -> {
                 op1 = binding.textoInicio.text.toString().toInt()
                 operador = "+"//Necesito guardar el operador porque lo voy a necesitar en el when
@@ -99,19 +101,27 @@ class MainActivity : AppCompatActivity(),OnClickListener {
                 binding.textoInicio.text = ""
             }
             R.id.btnIgual -> {
-                op2 = binding.textoInicio.text.toString().toInt()
+                op2 = binding.textoInicio.text.toString().toIntOrNull() ?:0
                 resultado = when (operador) {
                     "+" -> op1 + op2
                     "-" -> op1 - op2
                     "x" -> op1 * op2
                     "÷" -> if (op2 != 0) {op1 / op2
                             }else {
-                                 binding.textoInicio.text = "Error"
+                                 binding.textoInicio.text = "0"
                                     return
                     }
                     else -> 0// Si no se pulsa ninguno, volvemos a cero
                 }
                 binding.textoInicio.text = resultado.toString()
+                operador =""
+            }
+            R.id.btnBorrar-> {
+                op1 = 0
+                op2=0
+                resultado = 0
+                operador = ""
+                binding.textoInicio.text="0"
             }
         }
     }
