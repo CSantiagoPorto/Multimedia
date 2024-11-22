@@ -105,10 +105,12 @@ class MainActivity : AppCompatActivity(),OnClickListener {
 
                 operador =""
             }
-            R.id.btnCuadrado->{
-                op1=binding.textoInicio.text.toString().toIntOrNull() ?:0
-                resultado= op1*op1
-                binding.textoInicio.text= resultado.toString()
+            R.id.btnCuadrado -> {
+                op1 = binding.textoInicio.text.toString().toInt()
+                println("Valor de op1 antes de cuadrar: $op1")
+                resultado = op1 * op1
+                binding.textoInicio.text = resultado.toString()
+                operador =""
             }
 
             R.id.btnSumar -> {
@@ -142,6 +144,7 @@ class MainActivity : AppCompatActivity(),OnClickListener {
                                  binding.textoInicio.text = "0"
                         return
                     }
+
                     else -> 0// Si no se pulsa ninguno, volvemos a cero
                 }
                 binding.textoInicio.text = resultado.toString() //Guardamos el resultado como String
