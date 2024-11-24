@@ -46,6 +46,10 @@ class MainActivity : AppCompatActivity(),OnClickListener {
         binding.btnMultiplicar.setOnClickListener(this)
         binding.btnDividir.setOnClickListener(this)
         binding.btnIgual.setOnClickListener(this)
+        binding.btnTangente?.setOnClickListener(this)//Obliga a gestionar los null probablemente porque no están definidos en las dos configuracines
+        binding.btnSeno?.setOnClickListener(this)
+        binding.btnCoseno?.setOnClickListener(this)
+        binding.btnCuadrado?.setOnClickListener(this)
 
         }
 
@@ -89,16 +93,18 @@ class MainActivity : AppCompatActivity(),OnClickListener {
             R.id.btn9 -> añadirNumero("9")
             R.id.btnSeno -> {
                 op1 = binding.textoInicio.text.toString().toIntOrNull() ?: 0
-                resultado = kotlin.math.sin(Math.toRadians(op1.toDouble())).toInt()
+                resultado = kotlin.math.sin(Math.toRadians(op1.toDouble())).roundToInt()
                 binding.textoInicio.text = resultado.toString()
+                operador =""
             }
             R.id.btnCoseno -> {
                 op1 = binding.textoInicio.text.toString().toIntOrNull() ?: 0
                 resultado = kotlin.math.cos(Math.toRadians(op1.toDouble())).toInt()
                 binding.textoInicio.text = resultado.toString()
+                operador =""
             }
             R.id.btnTangente -> {
-
+                op1=binding.textoInicio.text.toString().toIntOrNull() ?:0
                 val radianes = Math.toRadians(op1.toDouble())
                 resultado = kotlin.math.tan(radianes).roundToInt() // Calcula y aproxima porque ya tenía toda la calculadora hecha en Int
                 binding.textoInicio.text = resultado.toString() // Muestra el resultado aproximado
@@ -106,7 +112,7 @@ class MainActivity : AppCompatActivity(),OnClickListener {
                 operador =""
             }
             R.id.btnCuadrado -> {
-                op1 = binding.textoInicio.text.toString().toInt()
+                op1 = binding.textoInicio.text.toString().toIntOrNull() ?:0
                 println("Valor de op1 antes de cuadrar: $op1")
                 resultado = op1 * op1
                 binding.textoInicio.text = resultado.toString()
