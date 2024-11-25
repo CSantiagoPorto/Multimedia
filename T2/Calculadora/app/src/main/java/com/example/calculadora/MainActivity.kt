@@ -45,13 +45,17 @@ class MainActivity : AppCompatActivity(),OnClickListener {
         binding.btnRestar.setOnClickListener(this)
         binding.btnMultiplicar.setOnClickListener(this)
         binding.btnDividir.setOnClickListener(this)
+        binding.btnCuadrado?.setOnClickListener(this)
+        binding.btnPorcentaje?.setOnClickListener(this)
+        binding.btnRaizCuadrada?.setOnClickListener(this)
         binding.btnIgual.setOnClickListener(this)
         binding.btnTangente?.setOnClickListener(this)//Obliga a gestionar los null probablemente porque no están definidos en las dos configuracines
         binding.btnSeno?.setOnClickListener(this)
         binding.btnCoseno?.setOnClickListener(this)
-        binding.btnCuadrado?.setOnClickListener(this)
+        binding.btnCubo?.setOnClickListener(this)
+        binding.btnLog?.setOnClickListener(this)
 
-        }
+    }
 
 
 
@@ -99,7 +103,7 @@ class MainActivity : AppCompatActivity(),OnClickListener {
             }
             R.id.btnCoseno -> {
                 op1 = binding.textoInicio.text.toString().toIntOrNull() ?: 0
-                resultado = kotlin.math.cos(Math.toRadians(op1.toDouble())).toInt()
+                resultado = kotlin.math.cos(Math.toRadians(op1.toDouble())).roundToInt()
                 binding.textoInicio.text = resultado.toString()
                 operador =""
             }
@@ -142,12 +146,13 @@ class MainActivity : AppCompatActivity(),OnClickListener {
             R.id.btnIgual -> {
                 op2 = binding.textoInicio.text.toString().toIntOrNull() ?:0
                 resultado = when (operador) {
+                    "%" -> (op1*op2)/100
                     "+" -> op1 + op2
                     "-" -> op1 - op2
                     "x" -> op1 * op2
                     "÷" -> if (op2 != 0) {op1 / op2
-                            }else {
-                                 binding.textoInicio.text = "0"
+                    }else {
+                        binding.textoInicio.text = "0"
                         return
                     }
 
@@ -163,6 +168,33 @@ class MainActivity : AppCompatActivity(),OnClickListener {
                 operador = ""
                 binding.textoInicio.text="0"
             }
+            R.id.btnPorcentaje -> {
+                    op1 = binding.textoInicio.text.toString().toIntOrNull() ?: 0
+                    operador = "%"
+                    binding.textoInicio.text = ""
+
+            }
+
+            R.id.btnRaizCuadrada -> {
+
+                op1 = binding.textoInicio.text.toString().toIntOrNull() ?: 0
+
+                if (op1 >= 0) {//Para controlar errores de números negativos
+                    var raiz = kotlin.math.sqrt(op1.toDouble()).roundToInt()
+                    binding.textoInicio.text = raiz.toString()
+                }
+            }
+
+            R.id.btnCubo -> {
+                var cubo = op1 * op1 * op1
+                binding.textoInicio.text = cubo.toString()
+            }
+            R.id.btnLog -> {
+                op1 = binding.textoInicio.text.toString().toIntOrNull() ?: 0
+                resultado = kotlin.math.log10(op1.toDouble()).roundToInt()
+                binding.textoInicio.text = resultado.toString()
+            }
+
         }
     }
 

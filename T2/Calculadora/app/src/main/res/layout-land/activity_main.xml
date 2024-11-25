@@ -12,7 +12,10 @@
         android:gravity="center"
         android:padding="16dp"
         android:text="0"
-        android:textSize="30sp"/>
+        android:textSize="30sp"
+        android:background="#D3D3E8"
+        android:textColor="#000000"
+        />
 
     <LinearLayout
         android:orientation="vertical"
@@ -45,11 +48,11 @@
                 android:layout_weight="1"
                 android:text="tan" />
             <Button
-                android:id="@+id/btnCuadrado"
+                android:id="@+id/btnLog"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="x²" />
+                android:text="log" />
         </LinearLayout>
 
         <!-- Fila 2 -->
