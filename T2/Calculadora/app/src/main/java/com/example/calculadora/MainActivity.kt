@@ -126,25 +126,26 @@ class MainActivity : AppCompatActivity(),OnClickListener {
             R.id.btnSumar -> {
                 op1 = binding.textoInicio.text.toString().toInt()
                 operador = "+"//Necesito guardar el operador porque lo voy a necesitar en el when
-                binding.textoInicio.text = ""
+                binding.textoInicio.text = "0"
             }
             R.id.btnRestar -> {
                 op1 = binding.textoInicio.text.toString().toInt()
                 operador = "-"
-                binding.textoInicio.text = ""
+                binding.textoInicio.text = "0"
             }
             R.id.btnMultiplicar -> {
                 op1 = binding.textoInicio.text.toString().toInt()
                 operador = "x"
-                binding.textoInicio.text = ""
+                binding.textoInicio.text = "0"
             }
             R.id.btnDividir -> {
                 op1 = binding.textoInicio.text.toString().toInt()
                 operador = "÷"
-                binding.textoInicio.text = ""
+                binding.textoInicio.text = "0"
             }
             R.id.btnIgual -> {
                 op2 = binding.textoInicio.text.toString().toIntOrNull() ?:0
+
                 resultado = when (operador) {
                     "%" -> (op1*op2)/100
                     "+" -> op1 + op2
@@ -186,6 +187,7 @@ class MainActivity : AppCompatActivity(),OnClickListener {
             }
 
             R.id.btnCubo -> {
+                op1= binding.textoInicio.text.toString().toIntOrNull() ?: 0
                 var cubo = op1 * op1 * op1
                 binding.textoInicio.text = cubo.toString()
             }
